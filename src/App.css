@@ -20,5 +20,37 @@
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+.app__fab {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 84px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: var(--color-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    font-weight: 300;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.45);
+    z-index: 90;
+    transition: background 200ms, transform 150ms;
+
+    &:hover {
+      background: var(--color-accent-hover);
+      transform: scale(1.05);
+    }
   }
 }

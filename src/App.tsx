@@ -4,6 +4,7 @@ import { Modal } from './components/Modal'
 import { Sidebar } from './components/Sidebar'
 import { NotesList } from './components/NotesList'
 import { EditNotes } from './components/EditNotes'
+import { BottomNav } from './components/BottomNav'
 
 export type NoteProps = {
   title: string
@@ -34,6 +35,8 @@ function App() {
       <NotesList notes={notes} setNotes={setNotes} setIsOpen={setIsOpen} />
       <EditNotes notes={notes} setNotes={setNotes} />
       <Modal isOpen={isOpen} onClose={handleClose} notes={notes} setNotes={setNotes} />
+      <BottomNav />
+      <button className="app__fab" onClick={() => setIsOpen(true)}>+</button>
     </div>
   )
 }

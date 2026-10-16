@@ -6,6 +6,10 @@
   padding: 24px 12px;
   gap: 2px;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .app__title {
