@@ -52,8 +52,9 @@ export const EditNotes = ({ notes, setNotes }: EditNotesProps) => {
 
                     {/* Actions droite */}
                     <div className="app__editor-actions">
-                        <button className="app__action-btn" onClick={() => console.log('archive')}>
-                            Archive Note
+                        <button className="app__action-btn" onClick={() => setNotes(notes.map((n, i) => i === selectedIndex ? { ...n, archived: !selectedNote.archived } : n))}>
+                            {selectedNote.archived ? "Restore Note" : "Archive Note"}
+
                         </button>
                         <button className="app__action-btn app__action-btn--delete" onClick={() => setNotes(notes.filter((_, i) => i !== selectedIndex))}>
                             Delete Note

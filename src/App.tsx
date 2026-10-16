@@ -20,10 +20,16 @@ function App() {
   const init = saved ? JSON.parse(saved) : []
   const [isOpen, setIsOpen] = useState(false)
   const [notes, setNotes] = useState<NoteProps[]>(init)
+  const [view, setView] = useState<'all' | 'archived'>('all')
+
 
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
+
+  useEffect(() => {
+    setNotes(prev => prev.map(n => ({ ...n, selected: false })))
+  }, [view])
 
   const handleClose = () => {
     setIsOpen(false)
@@ -31,8 +37,8 @@ function App() {
 
   return (
     <div className="app">
-      <Sidebar notes={notes} />
-      <NotesList notes={notes} setNotes={setNotes} setIsOpen={setIsOpen} />
+      <Sidebar notes={notes} view={view} setView={setView} />
+      <NotesList notes={notes} setNotes={setNotes} setIsOpen={setIsOpen} view={view} />
       <EditNotes notes={notes} setNotes={setNotes} />
       <Modal isOpen={isOpen} onClose={handleClose} notes={notes} setNotes={setNotes} />
       <BottomNav />
