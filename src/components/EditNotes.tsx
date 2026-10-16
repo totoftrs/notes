@@ -1,4 +1,5 @@
 import type { NoteProps } from "../App"
+import '../styles/EditNotes.css'
 
 type EditNotesProps = {
     notes: NoteProps[]

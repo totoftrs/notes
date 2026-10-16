@@ -1,4 +1,5 @@
 import type { NoteProps } from './../App'
+import '../styles/Sidebar.css'
 
 type SidebarProps = {
     notes: NoteProps[]
