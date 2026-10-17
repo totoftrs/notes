@@ -27,7 +27,7 @@ export const NotesList = ({ notes, setNotes, setIsOpen, view, search }: NotesLis
                     <button className="app__add-btn" onClick={() => setIsOpen(true)}>+ Create New Note</button>
                 </div>
                 <div className="app__notes">
-                    {notes.filter(note => view === 'all' ? !note.archived : note.archived).filter(note => note.title.toLowerCase().includes(search.toLowerCase()) || note.content.toLowerCase().includes(search.toLowerCase())).map((note, index) => (
+                    {notes.filter(note => view === 'all' ? !note.archived : note.archived).filter(note => note.title.toLowerCase().includes(search.toLowerCase()) || note.content.toLowerCase().includes(search.toLowerCase()) || note.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase()))).map((note, index) => (
                         <button
                             key={index}
                             className={`app__note-item ${note.selected ? 'active' : ''}`}
