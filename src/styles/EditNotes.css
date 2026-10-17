@@ -1,4 +1,5 @@
 .app__editor {
+  grid-row: 2;
   background: #ffffff;
   display: flex;
   flex-direction: column;

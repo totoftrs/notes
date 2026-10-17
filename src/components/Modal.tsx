@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './styles/modal.scss'
+import '../styles/modal.scss'
 import type { NoteProps } from '../App'
 
 type ModalProps = {
