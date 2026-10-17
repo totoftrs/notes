@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import '../styles/Search.css'
 import { IconSearch } from './icons'
 
@@ -9,9 +10,21 @@ export type SearchProps = {
 
 export const Search = ({ view, setSearch }: SearchProps) => {
 
+    const debounce = <T extends unknown[]>(fn: (...args: T) => void, delay: number) => {
+        let timer: number;
+
+        return (...args: T) => {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn(...args)
+            }, delay)
+        }
+    }
+
+    const debouncedSearch = useCallback(debounce(setSearch, 300), [])
+
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-        console.log('eventtoto', e.currentTarget.value)
-        setSearch(e.currentTarget.value)
+        debouncedSearch(e.currentTarget.value)
     }
     return (
         <div className="app__search-header">
@@ -26,7 +39,7 @@ export const Search = ({ view, setSearch }: SearchProps) => {
 
             <div className="search__input-wrapper">
                 <IconSearch className="search__icon" />
-                <input className="search__input" type="text" placeholder="Search by title, content, or tags…" onChange={handleChange}/>
+                <input className="search__input" type="text" placeholder="Search by title, content, or tags…" onChange={handleChange} />
             </div>
 
         </div>
