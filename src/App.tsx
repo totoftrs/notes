@@ -22,6 +22,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [notes, setNotes] = useState<NoteProps[]>(init)
   const [view, setView] = useState<'all' | 'archived'>('all')
+  const [search, setSearch] = useState<string>('')
 
 
   useEffect(() => {
@@ -39,8 +40,8 @@ function App() {
   return (
     <div className="app">
       <Sidebar notes={notes} view={view} setView={setView} />
-      <Search />
-      <NotesList notes={notes} setNotes={setNotes} setIsOpen={setIsOpen} view={view} />
+      <Search view={view} setSearch={setSearch}/>
+      <NotesList notes={notes} setNotes={setNotes} setIsOpen={setIsOpen} view={view} search={search}/>
       <EditNotes notes={notes} setNotes={setNotes} />
       <Modal isOpen={isOpen} onClose={handleClose} notes={notes} setNotes={setNotes} />
       <BottomNav />
